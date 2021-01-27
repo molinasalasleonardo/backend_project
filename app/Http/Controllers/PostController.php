@@ -21,9 +21,10 @@ class PostController extends Controller
     {
         $data= $request -> input('search');
         $query = Post::select()
-        ->where('title','like',"%$data%")
-        ->orwhere('author','like',"%$data%")
-        ->get();
+           ->where('title','like',"%$data%")
+          ->orwhere('author','like',"%$data%")
+          ->get();
+
         return view("post.index")->with(["posts" => $query]);
     }
     /**
