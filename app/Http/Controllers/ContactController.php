@@ -35,15 +35,16 @@ class ContactController extends Controller
             $contact->message = $request->message;
 
 
-            try {
+           // try {
                 Mail::to($request->email)->send(new SendContact($contact));
-                $contact->send_mail = "se envio el email";
-            } catch (\exception $e) {
-                $contact->send_mail = "fallo el envio: {$e->getMessage()}";
-            }
+               $contact -> save();
+                // $contact->send_mail = "se envio el email";
+           // } catch (\exception $e) {
+             //   $contact->send_mail = "fallo el envio: {$e->getMessage()}";
+           // }
             $contact->save();
         } catch (\exception $e) {
-            return response()->json("Se genero un error: {$e->getMessage()}", 404);
+           return response()->json("Se genero un error: {$e->getMessage()}", 404);
         }
         return response()->json("Mensaje fue enviado con exito", 201);
     }
