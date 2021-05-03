@@ -18,11 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group (['prefix' => 'category'], function(){
-    Route::get ('list', 'CategoryController@list');
-    Route::post ('create', 'CategoryController@save');
+Route::group(['prefix' => 'category'], function () {
+    Route::get('list', 'CategoryController@list');
+    Route::post('create', 'CategoryController@save');
 });
 
-Route::group (['prefix' => 'contact'], function(){
-    Route::post ('store', 'ContactController@store');
+Route::group(['prefix' => 'contact'], function () {
+    Route::post('store', 'ContactController@store');
 });
