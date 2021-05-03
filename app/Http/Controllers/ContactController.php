@@ -56,12 +56,12 @@ class ContactController extends Controller
             $contact->email   = $request->email;
             $contact->phone   = $request->phone;
             $contact->message = $request->message;
-            try {
+          //  try {
                 Mail::to($request->email)->send(new SendContact($contact));
-                $contact->send_email = "se envio el email";
-            } catch (\exception $e) {
-                $contact->send_email = "fallo el envio: {$e->getMessage()}";
-            }
+              //  $contact->send_email = "se envio el email";
+            //} catch (\exception $e) {
+                //$contact->send_email = "fallo el envio: {$e->getMessage()}";
+           // }
             $contact->save();
         } catch (\exception $e) {
             return response()->json("Se genero un error: {$e->getMessage()}", 404);
